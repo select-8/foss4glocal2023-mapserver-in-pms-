@@ -1,0 +1,204 @@
+<section data-markdown>
+    <script type="text/template">
+        ## <ins>MapView Builder</ins>
+
+        ### 32 Mapfiles (1 Per Local Authority)
+
+        ### 88 MAP LAYERs
+
+        ### 352 Thematics
+    </script>
+</section>
+
+<section data-markdown>
+    <script type="text/template">
+        ### What are [Mapfiles](https://www.mapserver.org/mapfile/)?
+
+        - The heart of MapServer
+        - Configuration files in a **DSL** - Domain Specific Language
+        - Looks like XML without the tags
+    </script>
+</section>
+
+<section>
+    <pre><code class="language-python" data-trim data-line-numbers="1|8|16|23|24|33">
+MAP
+    NAME "Welcome!"
+    EXTENT -20037508.34 -20048966.1 20037508.34 20048966.1
+    PROJECTION
+        "init=epsg:3857"
+    END
+    IMAGECOLOR "#ADD8E6"
+    LAYER
+        NAME "countries"
+        TYPE POLYGON
+        PROJECTION
+            "init=epsg:4326"
+        END
+        STATUS ON
+        INCLUDE "connections.conn"
+        DATA 
+            "GEOM FROM 
+            (
+                SELECT ID, NAME, GEOM FROM countries
+            ) 
+            as tbl USING UNIQUE ID ORDER BY ID"
+        EXTENT -180.0 -90.0 180.0 90
+        CLASS
+            STYLE
+                COLOR 60 179 113
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 0.1
+            END
+        END
+        CLASS
+            GROUP "labels"
+            TEXT "[NAME]"
+            LABEL
+                ANGLE AUTO
+                COLOR 49 79 79
+                OUTLINECOLOR 255 255 255
+                FONT "arial"
+                TYPE TRUETYPE
+                SIZE 10
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+END
+        </code></pre>
+    <span data-markdown style="font-size: x-large;">
+        <script type="text/template">
+            - Mapfiles start with MAP and end with END
+            - Mapfiles contain one-to-many LAYERs
+            - LAYERs contain DATA
+            - A LAYER is drawn using CLASSes
+            - A CLASS contains STYLEs
+            - A CLASS contains LABELs
+        </script>
+    </span>
+</section>
+
+<section data-markdown>
+    <script type="text/template">
+        ### [mappyfile](https://mappyfile.readthedocs.io/en/latest/)
+        
+        > A Python library to create, parse, modify, and format MapServer Mapfiles.
+
+        - Python 2 and 3 compatible
+        - Pure Python - no MapServer dependencies
+        - Open Source License (MIT)
+
+        <img class="plain" src="images/mappyfile_modules.png" style="background: none; width:80%" />
+
+        <!-- <img class="plain" src="images/overview_diagram2.png" style="background: none; width:80%" /> -->
+    </script>
+</section>
+
+<section>
+    <pre>
+        <code class="" data-trim data-line-numbers="1|13|21|22">
+            template: |
+            CLASS
+                GROUP "Class"
+                NAME "Motorway"
+                EXPRESSION "M"
+                STYLE
+                    COLOR 0 197 255
+                    WIDTH 3.8
+                    LINECAP BUTT
+                END
+            END
+        
+        classes:
+            - name: "Motorway"
+              expression: "M"
+              styles:
+              - width: 3.8
+                color: [0, 197, 255]
+        
+            - name: "National Primary"
+              expression: "NP"
+              styles:
+              - width: 3.4
+                color: [56, 168, 0]
+        
+            - name: "National Secondary"
+              expression: "NS"
+              styles:
+              - width: 3
+                color: [56, 168, 0]
+        
+            - name: "Regional"
+              expression: "R"
+              styles:
+              - width: 2.6
+                color: [255, 105, 0]
+        
+            - name: "Local Primary"
+              expression: "LP"
+              styles:
+              - width: 2.2
+                color: [255, 255, 50]
+        
+            - name: "Local Secondary"
+              expression: "LS"
+              styles:
+              - width: 1.8
+                color: [205, 190, 100]
+        
+            - name: "Local Tertiary"
+              expression: "LT"
+              styles:
+              - width: 1.4
+                color: [137, 137, 68]
+        
+            - name: "Unclassified"
+              expression: "U"
+              styles:
+              - width: 1.4
+                color: [230, 0, 126]
+        </code>
+    </pre>
+</section>
+
+<section data-markdown>
+    <script type="text/template">
+        <pre>
+            <code class="language-ada">
+                mapfile-compile 
+                  --template-map 
+                  --mapfile-config
+                  --output-folder 
+            </code>
+        </pre>
+        
+        <pre>
+            <code class="language-ada">
+                mapfile-generate 
+                  --build-config 
+                  --build-name 
+                  --output-folder 
+                  --template 
+            </code>
+        </pre>
+
+    </script>
+</section>
+
+<section data-markdown>
+    <script type="text/template">
+        ### [MAPSERVER FEATURES BY EXAMPLE](https://geographika.github.io/foss4g2023-mapserver-by-example/)?
+
+        #### by Seth Girvin, Presented at FOSS4G Prizren 2023
+    </script>
+</section>
+
+<section data-markdown>
+    <script type="text/template">
+          ### MapServer Centric View
+  
+          <object type="image/svg+xml" data="images/Sys1_plain.svg" width="80%" height="80%"></object>
+    </script>
+  </section>
