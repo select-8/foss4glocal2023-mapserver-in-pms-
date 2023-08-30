@@ -11,6 +11,20 @@
         ###### by Liam O'Connor, https://compass.ie
 
         <img class="plain" src="images/compass.png" style="background: none; width: 60%" />
+        <aside class="notes">
+            Hello. My name is Liam O'Connor, I'm a GIS Developer and Product owner at Compass Informatics. 
+            My presentation today is going to be about the utilisation of MapServer in an asset management system. 
+            <br>
+            <br>
+            The asset in question here is the Irish Road Network and the application is called The Pavement Management System or PMS, 
+            <br>
+            <br>
+            …but more on that in a bit. 
+            <br>
+            <br>
+            For now I'd like to set the scene and provide some context to the presentation.
+
+        </aside>
     </script>
 </section>
 
@@ -38,6 +52,38 @@
         <br>
         <br>
         <img class="plain" src="images/RMO.png" style="background: none" />
+        <aside class="notes">
+            <strong>Compass Informatics</strong> was started in Dublin in 1997, being one of the first home grown companies to utilise GIS in a commercial capacity.<br>
+            <br>
+            It continued to grow successfully over the next two decades, focusing broadly on transportation, environment & natural resources, utilities, 
+            and planning. Fostering long standing relationships with Irish national bodies such as the National Transport Association, 
+            Irish Water and The Environmental Protection Agency to name but a few.<br>
+            <br>
+            In 2019 Compass was acquired by <strong>Tracsis Plc.</strong><br>
+            Tracsis is a software house started from Leeds University in 2005.<br>
+            Initially focused on Rail Crew Optimisation, Tracsis Plc now has over 15 acquired business units, all operating within the transportation, 
+            software and services arena<br>
+            within the UK, Ireland and the US.<br>
+            In 2021 Tracsis Plc acquired another Irish company IconGeo.<br>
+            This acquisition further compliments and expands on Compass Informatics Earth Observation capabilities. 
+            And here I must give a plug for my colleague Adriaan who gave a talk earlier this morning at the Maynooth FOSS4G Local today titled: 
+            Deep learning and Sentinel-1 for grazing detection in Ireland, so check that out on YouTube if you can.<br>
+            <br>
+            <strong>The LGMA</strong> is a state agency that provides a range of professional services to local authorities. 
+            They work collaboratively with all 31 local authorities in Ireland to support the delivery of local government services and policy. 
+            They also help local authorities to implement change and enhance performance.<br>
+            The Local Authorities themselves, represented by the LGMA, are our end users. 
+            Specifically Civil, Road and Safety Engineers along with GIS Technicians and GIS Data Officers.<br>
+            <br>
+            Then we have the <strong>Road Management Office.</strong> The RMO's function is to Provide to Local Authorities in Ireland centralised supports, 
+            forums, guidelines and technology to support improved roads asset management outcomes and consistency in road maintenance and investment.<br>
+            <br>
+            The Pavement Management System is one of the main conduits through which this is achieved.<br>
+            <br>
+            So that's the stakeholders.<br>
+            Next I'd like to provide some context around the title of this Presentation, and answer the question 
+            I'm sure some you have asked yourselves, What is a Pavement anyway?
+        </aside>
     </script>
 </section>
 
@@ -48,6 +94,13 @@
 
     <img class="plain" src="images/PavementBand.jpg" style="background: none" />
 
+    <aside class="notes">
+        For some people, specifically those who were teenagers in the 90s and into American alternative Indy rock, 
+        it might mean the band Pavement, who’s album cover for their album Wowee Zowee, 
+        as change would have it for this portion of the presentation, has a cover with the word Pavement with a Question mark on it. 
+        But not for most, for most it probably means…
+    </aside>
+
 </section>
 
 <section data-auto-animate>
@@ -57,6 +110,10 @@
     <img class="plain" src="images/PavementBand.jpg" style="width: 15%; height: 15%;"  />
 
     <img class="plain" src="images/CurbBlackRock.PNG" style="width: 55%; height: 55%;" />
+
+    <aside class="notes">
+        …this. That is the raised bit of a road up on the kerb that we walk along. But it also means this …
+    </aside>
 
 </section>
 
@@ -69,6 +126,10 @@
     <img class="plain" src="images/CurbBlackRock.PNG" style="width: 30%; height: 30%;" />
 
     <img class="plain" src="images/redcow.jpg" style="width: 40%; height: 40%;"  />
+
+    <aside class="notes">
+        Or all the non-green parts anyway. And this…
+    </aside>
 
 </section>
 
@@ -84,15 +145,35 @@
 
     <img class="plain" src="images/skinnymile.png" style="width: 40%; height: 40%;" />
 
+    <aside class="notes">
+        Particularly of late, the capture of Active Travel Infrastructure…that is pavements for walking and/or cycling on… 
+        in the Pavement Management System, has become a major focus for the RMO and Local Authorities.
+    </aside>
+
 </section>
 
-<section data-markdown>
-    <script type="text/template">
-        ### What is a Pavement anyway?
+<section data-auto-animate>
+    <h3>What is a Pavement anyway?</h3>
+    <em>A <b>pavement</b>, in civil engineering terms, is a man-made surface on natural ground that people, vehicles or animals can cross.</em>
 
-        *A **pavement**, in civil engineering terms, is a man-made surface on natural ground that people, vehicles or animals can cross.*
+    <aside class="notes">
+        However, in the context of The Pavement Management System, we are using the civil engineering term,<br>
+        where a pavement is:<br>any man-made surface on natural ground that people, vehicles or animals can cross.
+    </aside>
+</section>
 
-    </script>
+<section data-auto-animate>
+    <h3>What is a Pavement anyway?</h3>
+    <em>A <b>pavement</b>, in civil engineering terms, is a man-made surface on natural ground that people, vehicles or animals can cross.</em>
+    <br>
+    <br>
+    <p>And the <b>Management System</b>?</p>
+
+    <aside class="notes">
+        This began life as a desktop GIS in MapInfo around 16 years ago.<br>
+        While this began to bring some structure to managing pavements in Ireland, over time, the need for a centralised data management system became apparent. 
+        To this end, in 2016, Compass, working with the RMO, began development of a web-based system with a centralised data repository.<br>
+    </aside>
 </section>
 
 
@@ -120,5 +201,9 @@
         - Fast
         - Cross Platform - Linux, Windows, Mac OS X
         - Written in C/C++
+        <aside class="notes">
+            So just one last bit of context before I get into the MapSever side of things<br>
+            SIDE SLIDE
+        </aside>
     </script>
 </section>
