@@ -1,15 +1,5 @@
 <section data-markdown>
     <script type="text/template">
-        ### What are [Mapfiles](https://www.mapserver.org/mapfile/)?
-
-        - The heart of MapServer
-        - Configuration files in a **DSL** - Domain Specific Language
-        - Looks like XML without the tags
-    </script>
-</section>
-
-<section data-markdown>
-    <script type="text/template">
         ## <ins>MapView Builder</ins>
 
         ### 32 Mapfiles (1 Per Local Authority)
@@ -17,9 +7,12 @@
         ### 88 MAP LAYERs
 
         ### 352 Thematics
+
+        <aside class="notes">
+            MapView Builder itself is built upon python library called MAPPYFILE
+        </aside>
     </script>
 </section>
-
 
 <section data-markdown>
     <script type="text/template">
@@ -33,10 +26,21 @@
 
         <img class="plain" src="images/mappyfile_modules.png" style="background: none; width:80%" />
 
-        <!-- <img class="plain" src="images/overview_diagram2.png" style="background: none; width:80%" /> -->
+        <aside class="notes">
+            And What are MapFiles?
+        </aside>
     </script>
 </section>
 
+<section data-markdown>
+    <script type="text/template">
+        ### What are [Mapfiles](https://www.mapserver.org/mapfile/)?
+
+        - The heart of MapServer
+        - Configuration files in a **DSL** - Domain Specific Language
+        - Looks like XML without the tags
+    </script>
+</section>
 
 <section>
     <pre><code class="language-python" data-trim data-line-numbers="1|8|16|23|24|33">
@@ -95,6 +99,10 @@ END
             - A CLASS contains STYLEs
             - A CLASS contains LABELs
         </script>
+        <aside class="notes">
+            So as mentioned previously, we have 88 layers made up of some 350+ sytles.
+            GO RIGHT
+        </aside>
     </span>
 </section>
 
@@ -171,47 +179,3 @@ END
         </aside>
     </pre>
 </section>
-
-<section data-markdown>
-    <script type="text/template">
-        <pre>
-            <code class="language-ada">
-                mapfile-compile 
-                  --template-map 
-                  --mapfile-config
-                  --output-folder 
-            </code>
-        </pre>
-        
-        <pre>
-            <code class="language-ada">
-                mapfile-generate 
-                  --build-config 
-                  --build-name 
-                  --output-folder 
-                  --template 
-            </code>
-        </pre>
-
-    </script>
-</section>
-
-<section data-markdown>
-    <script type="text/template">
-        ### [MAPSERVER FEATURES BY EXAMPLE](https://geographika.github.io/foss4g2023-mapserver-by-example/)?
-
-        #### by Seth Girvin, Presented at FOSS4G Prizren 2023
-        <aside class="notes">
-            Seth is the Author of MappyFile.<br>
-            In this presentaton he goes into greater detail about mappyfile and the brilliant mapserverstudio whihc allow you to design mapfiles in the browser.
-        </aside>
-    </script>
-</section>
-
-<section data-markdown>
-    <script type="text/template">
-          ### MapServer Centric View
-  
-          <object type="image/svg+xml" data="images/Sys1_plain.svg" width="80%" height="80%"></object>
-    </script>
-  </section>
